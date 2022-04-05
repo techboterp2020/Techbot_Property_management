@@ -1,6 +1,6 @@
 {
     'name': 'Property Management',
-    'version': '15.0.1.0.0',
+    'version': '15.1.7.9',
     'summary': 'Property Management System',
     'description': 'Odoo15 Property Management System,Odoo15 Realestate, Property Mangement, Odoo 15',
     'category': 'Industries',
@@ -8,19 +8,23 @@
     'website': "https://techboterp.com",
     'company': 'TechbotErP',
     'license': 'LGPL-3',
+    'complexity': 'easy',
+    'sequence': -10,
     'depends': [
         'base',
-        'crm',
-        'account',
-        'sale_management',
         'stock',
 
     ],
     'data': [
-
-        'views/property_details_view.xml',
-
-        'security/ir.model.access.csv'
+        'security/ir.model.access.csv',
+        'views/property_management_system_views.xml',
+        'views/property_apartment_type_views.xml',
+        'views/floor_details_views.xml',
+        'views/bed_space_type_views.xml',
+        'views/room_partition_type_views.xml',
+        'views/room_kitchen_details_views.xml',
+        'views/room_toilet_details_views.xml',
+        'views/property_management_menu.xml',
 
     ],
     'installable': True,

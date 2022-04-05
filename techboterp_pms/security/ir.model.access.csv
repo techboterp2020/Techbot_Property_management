@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_property_management_system,property.management.system,model_property_management_system,base.group_user,1,1,1,1
+access_property_documents,property.documents,model_property_documents,base.group_user,1,1,1,1
+access_property_apartment_type,property.apartment.type,model_property_apartment_type,base.group_user,1,1,1,1
+access_floor_details,floor.details,model_floor_details,base.group_user,1,1,1,1
+access_birth_type,birth.type,model_birth_type,base.group_user,1,1,1,1
+access_room_partition_type,room.partition.type,model_room_partition_type,base.group_user,1,1,1,1
+access_room_furniture,room.furniture,model_room_furniture,base.group_user,1,1,1,1
+access_room_electronics,room.electronics,model_room_electronics,base.group_user,1,1,1,1
+access_room_equipment_details,room.equipment.details,model_room_equipment_details,base.group_user,1,1,1,1
+access_room_kitchen_details,room.kitchen.details,model_room_kitchen_details,base.group_user,1,1,1,1
+access_room_toilet_details,room.toilet.details,model_room_toilet_details,base.group_user,1,1,1,1
+
+
+
+
+

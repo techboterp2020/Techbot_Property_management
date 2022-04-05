@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_blood_group,blood.group,model_blood_group,base.group_user,1,1,1,1
+access_job_designation,job.designation,model_job_designation,base.group_user,1,1,1,1
+access_work_location,work.location,model_work_location,base.group_user,1,1,1,1
+access_id_proof,id.proof,model_id_proof,base.group_user,1,1,1,1
+access_bank_details,bank.details,model_bank_details,base.group_user,1,1,1,1
+

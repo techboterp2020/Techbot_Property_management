@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  Inherit  Rental Sale Order View form  -->
+    <record id="view_res_config_settings_rental_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.rental.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale_renting.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="row mt16 o_settings_container">-->
+                    <div class="col-12 col-lg-6 o_setting_box" name="rental_delay_costs">
+                        <div class="o_setting_left_pane">
+                        </div>
+                        <div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_left_pane">
+                                    <field name="module_restrict_sale_renting"/>
+                                </div>
+                                <div class="o_setting_right_pane" name="hide_zero_qty_product_rental_sale">
+                                    <label for="module_restrict_sale_renting"/>
+                                    <div class="text-muted">
+                                        To Hide Products Have no stock/ Zero  in Sale Order.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

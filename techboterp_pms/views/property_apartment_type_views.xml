@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Apartment Type Details-->
+    <record id="property_apartment_type_form_view" model="ir.ui.view">
+        <field name="name">property.apartment.type.form.view</field>
+        <field name="model">property.apartment.type</field>
+        <field name="arch" type="xml">
+            <form string="Apartment Type">
+                <sheet>
+                    <div>
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" required="1"/>
+                        </h1>
+                    </div>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="property_apartment_type_tree_view" model="ir.ui.view">
+        <field name="name">property.apartment.type.tree.view</field>
+        <field name="model">property.apartment.type</field>
+        <field name="arch" type="xml">
+            <tree string="Apartment Type" multi_edit="1" sample="1">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_property_apartment_type" model="ir.actions.act_window">
+        <field name="name">Apartment Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">property.apartment.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new document
+            </p>
+            <p>
+                Also you will find here all the related documents and download it by clicking on any individual
+                document.
+            </p>
+        </field>
+    </record>
+</odoo>

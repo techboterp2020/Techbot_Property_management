@@ -4,7 +4,6 @@
 #    Author: TechbotErp(<https://techboterp.com/>)
 #    you can modify it under the terms of the GNU LESSER
 #    GENERAL PUBLIC LICENSE , Version v1.0
-
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -15,4 +14,7 @@
 #    If not, see <https://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from . import property_details
+
+from . import rental_customization
+from . import res_config_setting_rental
+from . import rental_report

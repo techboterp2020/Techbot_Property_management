@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <!-- Top menu item -->
+
+        <menuitem id="property_management_menu_root" name="Property Management" />
+
+        <!-- PROPERTY DETAILS (MAIN USER MENU) -->
+        <menuitem id="product_overview_menu" name="Overview" action="techboterp_product_master_custom.product_template_action_overview_details"
+          parent="property_management_menu_root" sequence="3"/>
+
+
+        <!-- CONFIGURATION (MAIN USER MENU) -->
+        <menuitem id="menu_property_configuration" name="Configuration" action="action_property_management"
+                parent="property_management_menu_root" sequence="265"/>
+
+        <!--   Sub Menu Categories -->
+        <menuitem id="menu_property_apartment_categories" action="action_property_management"
+                  name="Apartment Categories Details" parent="menu_property_configuration" sequence="1"/>
+        <!--         Apartment Details    -->
+        <menuitem id="menu_property_floor_details" name="Floor Details" action="action_floor_details"
+                 parent="menu_property_apartment_categories" sequence="1"/>
+
+        <menuitem id="menu_property_apartment_type" action="action_property_apartment_type" name="Apartment Type"
+                  parent="menu_property_apartment_categories" sequence="2"/>
+
+
+        <!--        Room Related Menu-->
+        <menuitem id="menu_property_room_categories" action="action_property_management" name="Room Categories Details"
+                parent="menu_property_configuration" sequence="2"/>
+
+        <menuitem id="menu_property_room_kitchen_details" name="Kitchen Details" action="action_room_kitchen_details"
+                parent="menu_property_room_categories" sequence="4"/>
+
+        <menuitem id="menu_property_room_toilet_details" name="Toilet Details" action="action_room_toilet_details"
+                parent="menu_property_room_categories" sequence="5"/>
+
+        <menuitem id="sub_menu_property_types" name="Room Categories Types"
+                action="action_property_management" parent="menu_property_configuration" sequence="11"/>
+
+        <menuitem id="menu_room_partition_type_details" name="Room Partition Type" action="action_room_partition_type"
+                parent="sub_menu_property_types" sequence="1"/>
+
+        <menuitem id="menu_property_bed_birth_type_details" name="Bed Space Type" action="action_bed_birth_type"
+                parent="sub_menu_property_types" sequence="2"/>
+
+        <menuitem id="menu_property_furniture_details" name="Room Furniture Details" action="action_room_furniture_details"
+                parent="sub_menu_property_types" sequence="3"/>
+
+        <menuitem id="menu_room_equipment_details" name="Equipments Details" action="action_room_equipment_details"
+                parent="sub_menu_property_types" sequence="5"/>
+
+        <menuitem id="menu_room_electronics_details" name="Room Electronics Details"
+                action="action_room_electronics_details" parent="sub_menu_property_types" sequence="4"/>
+
+        <!-- TENANT (MAIN USER MENU) -->
+
+        <menuitem
+                id="tenant_details_menu"
+                name="Contacts"
+                action="action_property_management"
+                parent="property_management_menu_root"
+                sequence="2"/>
+
+        <menuitem
+                id="tenant_sub_menu"
+                name="Tenant"
+                action="base.action_partner_form"
+                parent="tenant_details_menu"
+                sequence="3"/>
+
+        <!-- Product (MAIN USER MENU) -->
+
+
+        <menuitem
+                id="product_details_menu"
+                name="Products Details"
+                action="action_property_management"
+                parent="property_management_menu_root"
+                sequence="3"/>
+        <menuitem
+                id="all_product_details_menu"
+                name="Products"
+                action="stock.product_template_action_product"
+                parent="product_details_menu"
+                sequence="1"/>
+    </data>
+</odoo>
+

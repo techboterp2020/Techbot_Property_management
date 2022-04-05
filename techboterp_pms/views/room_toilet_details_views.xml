@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="property_room_room_toilet_details_form_view" model="ir.ui.view">
+        <field name="name">property.room.toilet.details.form.view</field>
+        <field name="model">room.toilet.details</field>
+        <field name="priority" eval="4"/>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" required="1" placeholder="Toilet"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="equipment_ids" string="Equipment" widget="many2many_tags"
+                                   options="{'color_field': 'color'}"/>
+                        </group>
+                        <group>
+                            <field name="electronics_ids" string="Electronics" widget="many2many_tags"
+                                   options="{'color_field': 'color'}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="property_room_toilet_details_tree_view" model="ir.ui.view">
+        <field name="name">room.toilet.details.details.tree.view</field>
+        <field name="model">room.toilet.details</field>
+        <field name="arch" type="xml">
+            <tree string="Bed Space Details" sample="1">
+                <field name="name" string="Name"/>
+                <field name="equipment_ids" string="Equipment" widget="many2many_tags"
+                       options="{'color_field': 'color'}"/>
+                <field name="electronics_ids" string="Electronics" widget="many2many_tags"
+                       options="{'color_field': 'color'}"/>
+            </tree>
+
+        </field>
+    </record>
+
+    <record id="action_room_toilet_details" model="ir.actions.act_window">
+        <field name="name">Room Toilet</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">room.toilet.details</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new document
+            </p>
+            <p>
+                Also you will find here all the related documents and download it by clicking on any individual
+                document.
+            </p>
+        </field>
+    </record>
+</odoo>
