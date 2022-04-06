@@ -27,7 +27,7 @@
     'complexity': 'easy',
     'sequence': -10,
     'depends': [
-        'base', 'techboterp_pms','sale_renting','stock'
+        'base', 'techboterp_pms', 'sale_renting', 'stock'
     ],
     'data': [
         # 'security/ir.model.access.csv',
@@ -41,4 +41,9 @@
     'installable': True,
     'auto_install': False,
     'application': True,
+    'assets': {
+        'web.assets_backend': [
+            'techboterp_product_master_custom/static/src/scss/productoverview.scss',
+        ],
+    },
 }
