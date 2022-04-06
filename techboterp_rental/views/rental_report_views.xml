@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_rental_report_inherit_view_tree" model="ir.ui.view">
+        <field name="name">sale.rental.report.inherit.view.tree</field>
+        <field name="model">sale.rental.report</field>
+        <field name="inherit_id" ref="sale_renting.sale_rental_report_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree/field[@name='product_id']" position="after">
+                <field name="is_room" optional="hide" attrs="{'invisible': [('is_room','=', False)]}"/>
+                <field name="is_partition" optional="hide" attrs="{'invisible': [('is_partition','=', False)]}"/>
+                <field name="is_bed_space" optional="hide" attrs="{'invisible': [('is_bed_space','=', False)]}"/>
+
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="rental_report_search_inherit_view" model="ir.ui.view">
+        <field name="name">sale.rental.report.search.inherit</field>
+        <field name="model">sale.rental.report</field>
+        <field name="inherit_id" ref="sale_renting.rental_report_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='categ_id']" position="after">
+                <filter name="product_id" string='Rooms' domain="[('product_id.is_room', '=', True)]"/>
+                <filter name="product_id" string='Partitions' domain="[('product_id.is_partition', '=', True)]"/>
+                <filter name="product_id" string='Bed Spaces' domain="[('product_id.is_bed_space', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

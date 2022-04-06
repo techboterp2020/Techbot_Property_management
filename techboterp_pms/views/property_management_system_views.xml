@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="property_management_system_view_form" model="ir.ui.view">
+        <field name="name">property.management.form.view</field>
+        <field name="model">property.management.system</field>
+        <field name="arch" type="xml">
+            <form string="Property Management">
+                <sheet>
+                    <field name="building_image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" required="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="owner_id"/>
+                            <label for="street" string="Building Address"/>
+                            <div class="o_address_format">
+                                <field name="street" class="o_address_street" placeholder="Street"/>
+                                <field name="street2" class="o_address_street" placeholder="Street2"/>
+                                <field name="city" class="o_address_city" placeholder="City"/>
+                                <field name="state_id" class="o_address_state" placeholder="State"/>
+                                <field name="zip" class="o_address_zip" placeholder="Zip"/>
+                                <field name="country_id" class="o_address_country,oe_no_button" placeholder="Country"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page name="apartment_details" string="Apartment details">
+                            <field name="apartment_ids">
+                                <tree create="0">
+                                    <field name="floor_id" string="Floor"/>
+                                    <field name="name" string="Apartment Name"/>
+                                    <field name="apartment_type_id" string="Apartment Type"/>
+                                    <field name="parking_availability" string="Parking"/>
+                                    <field name="room_ids" string="Rooms" widget="many2many_tags"
+                                           options="{'color_field': 'color'}"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Building Details" name="building_details">
+                            <field name="building_plan_document_ids" widget="section_and_note_one2many">
+                                <tree editable="bottom">
+                                    <field name="building_plan_document" widget="binary"
+                                           filename="building_plan_filename"/>
+                                    <field name="building_plan_filename" invisible="1"/>
+                                    <field name="ejari_name"/>
+                                    <field name="ejari_documents" widget="binary" filename="ejari_filename"/>
+                                    <field name="ejari_filename" invisible="1"/>
+                                    <field name="dewa_sewa_no"/>
+                                    <field name="dewa_sewa_document" widget="binary" filename="dewa_sewa_filename"/>
+                                    <field name="dewa_sewa_filename" invisible="1"/>
+                                    <field name="kyc"/>
+                                    <field name="kyc_document" filename="kyc_filename"/>
+                                    <field name="kyc_filename" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page name='owner_agreement_details' string="Agreement Details">
+                            <group name="lease_agreement" string="Lease Agreement">
+                                <group>
+                                    <field name="lease_start_date"/>
+                                </group>
+                                <group>
+                                    <field name="lease_end_date"/>
+                                </group>
+                            </group>
+
+                            <separator string="Lease &amp; MOU Agreement Details" colspan="4"/>
+                            <field name="building_lease_document_ids">
+                                <tree editable="bottom">
+                                    <field name="lease_agreement_document" widget="binary"
+                                           filename="lease_agreement_filename"/>
+                                    <field name="lease_agreement_filename" invisible="1"/>
+                                    <field name="mou_agreement_document" widget="binary"
+                                           filename="lease_agreement_filename"/>
+                                    <field name="mou_agreement_filename" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page name='owner_property_details' string="Property Details">
+                            <group name="owner_advance_payment" string="Advance Payment Details">
+                                <group>
+                                    <field name="no_of_units"/>
+                                    <field name="advance_payment_date"/>
+                                    <field name="advance_payment_amount"/>
+                                    <field name="advance_payment_cheque_no"/>
+                                </group>
+                            </group>
+
+                            <group name="owner_rent_payment" string="Rent Payment Details">
+                                <group>
+                                    <field name="rent_paid_date"/>
+                                    <field name="rent_payment_amount"/>
+                                    <field name="rent_payment_cheque_no"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- To View Log notes -->
+                <div class="oe_chatter">
+                    <!--  <field name="message_follower_ids" widget="mail_followers"/>-->
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="property_management_system_tree_view" model="ir.ui.view">
+        <field name="name">property.management.system.tree</field>
+        <field name="model">property.management.system</field>
+        <field name="arch" type="xml">
+            <tree string="Property Management">
+                <field name="name"/>
+                <field name="owner_id" string="Owner"/>
+                <field name="mobile" string="Mobile" optional="hide"/>
+                <field name="phone" string="Phone" optional="hide"/>
+                <field name="apartment_ids" string="APARTMENT" optional="hide" widget="many2many_tags"
+                       options="{'color_field': 'color'}"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Kanban View Of Student's Profiles -->
+    <record id="pms_building_kanban_view" model="ir.ui.view">
+        <field name="name">property.management.system.kanban.view</field>
+        <field name="model">property.management.system</field>
+        <field name="arch" type="xml">
+            <kanban class="o_res_partner_kanban" sample="1">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="owner_id"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="mobile"/>
+                <field name="street"/>
+                <field name="street2"/>
+                <field name="zip"/>
+                <field name="city"/>
+                <field name="country_id"/>
+                <field name="state_id"/>
+                <field name="building_image"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                            <t>
+                                <div class="o_kanban_image_fill_left o_kanban_image_full"
+                                     t-attf-style="background-image: url(#{kanban_image('property.management.system', 'building_image', record.id.raw_value)})"
+                                     role="img"/>
+                            </t>
+                            <div class="oe_kanban_details d-flex flex-column">
+                                <strong class="o_kanban_record_title oe_partner_heading">
+                                    <field name="name"/>
+                                </strong>
+                                <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                <ul>
+                                    <li>
+                                        Owner :<field name="owner_id"/>
+                                    </li>
+
+                                    <li t-if="record.city.raw_value or record.country_id.raw_value">
+                                        <span>Addres :</span>
+                                        <t t-if="record.city.raw_value">
+                                            <field name="city"/>
+                                            <t t-if="record.country_id.raw_value">,</t>
+                                        </t>
+                                        <t t-if="record.country_id.raw_value">
+                                            <field name="country_id"/>
+                                        </t>
+                                    </li>
+                                    <li t-if="record.email.raw_value" class="o_text_overflow">
+                                        email: <field name="email"/>
+                                    </li>
+
+                                    <li t-if="record.phone.raw_value" class="o_text_overflow">
+                                        Contact No:
+                                        <field name="phone"/>,
+                                        <t t-if="record.mobile.raw_value">
+                                            <field name="mobile"/>
+                                        </t>
+                                    </li>
+                                </ul>
+                                <div class="o_row">
+                                    <span class="oe_kanban_partner_links"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="action_property_management" model="ir.actions.act_window">
+        <field name="name">Property Building Details</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">property.management.system</field>
+        <!--            <field name="view_type">form</field>-->
+        <field name="view_mode">kanban,tree,form</field>
+        <!--            <field name="view_id" ref="property_stage_tree_view"/>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Set a new stage in your Properties
+            </p>
+            <p>
+                Stages allow salespersons to easily track how a specific opportunity
+                is positioned in the sales cycle.
+            </p>
+        </field>
+    </record>
+
+    <!--    Property Documents action-->
+    <record id="view_property_document_tree" model="ir.ui.view">
+        <field name="name">property.documents.tree</field>
+        <field name="model">property.documents</field>
+        <field name="priority">6</field>
+        <field name="arch" type="xml">
+            <tree string="Property Management Documents">
+                <field name="building_plan_filename" invisible="1"/>
+                <field name="ejari_name"/>
+                <field name="ejari_documents" filename="ejari_filename"/>
+                <field name="ejari_filename" invisible="1"/>
+                <field name="dewa_sewa_no"/>
+                <field name="dewa_sewa_document" filename="dewa_sewa_filename"/>
+                <field name="dewa_sewa_filename" invisible="1"/>
+                <field name="lease_agreement_document" filename="lease_agreement_filename"/>
+                <field name="lease_agreement_filename" invisible="1"/>
+                <field name="mou_agreement_document" filename="lease_agreement_filename"/>
+                <field name="mou_agreement_filename" invisible="1"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_property_documents_details" model="ir.actions.act_window">
+        <field name="name">Property Documents Details</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">property.documents</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new document
+            </p>
+            <p>
+                Also you will find here all the related documents and download it by clicking on any individual
+                document.
+            </p>
+        </field>
+    </record>
+</odoo>
