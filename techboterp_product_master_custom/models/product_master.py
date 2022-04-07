@@ -14,9 +14,10 @@
 #
 ##############################################################################
 
-from odoo import api, fields, models, api, _
+from odoo import api, fields, models, api, tools, _
 from random import randint
 from odoo.exceptions import UserError, ValidationError
+# from odoo.modules.module import get_module_resource
 
 
 def _get_default_color(self):
@@ -46,7 +47,6 @@ class ProductInherit(models.Model):
     partition_type_id = fields.Many2one('room.partition.type', string='Partition Type', tracking=True)
 
     """# Room Details Master #"""
-    # apartment_id = fields.Many2one('product.template', string="Apartment Name", domain="[('is_apartment','=',True)]",tracking=True)
     bed_space_ids = fields.One2many('product.template', 'room_id', domain="[('is_bed_space','=',True)]", tracking=True,
                                     string='Bed Space Name')
     room_partition_ids = fields.One2many('product.template', 'partition_room_id', domain="[('is_partition','=',True)]",
@@ -220,8 +220,6 @@ class ProductInherit(models.Model):
     def _compute_color(self):
         for product in self:
             product.product_kanban_color = 0
-            # if (ticket.sla_deadline and ticket.sla_deadline < fields.Datetime.now()) or (
-            #         ticket.non_sla_dead_line and ticket.non_sla_dead_line < fields.Datetime.now()):
             """ Background Color Changes Based on the Stages in Kanban View
                     if the deadline is overdue the background color changed to Red
                     and the stage is closed then the background color red changed to white    """
