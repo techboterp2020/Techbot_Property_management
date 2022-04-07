@@ -1,6 +1,6 @@
 {
     'name': 'Property Management',
-    'version': '15.1.7.9',
+    'version': '15.1.8.0',
     'summary': 'Property Management System',
     'description': 'Odoo15 Property Management System,Odoo15 Realestate, Property Mangement, Odoo 15',
     'category': 'Industries',
