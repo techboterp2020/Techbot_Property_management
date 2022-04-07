@@ -2,7 +2,7 @@
     'name': 'Property Management',
     'version': '15.1.8.0',
     'summary': 'Property Management System',
-    'description': 'Odoo15 Property Management System,Odoo15 Realestate, Property Mangement, Odoo 15',
+    'description': 'Odoo15 Property Management System,Odoo15 Real estate, Property Management, Odoo 15',
     'category': 'Industries',
     'author': 'TecbotERP',
     'website': "https://techboterp.com",

@@ -68,6 +68,8 @@ class ProductInherit(models.Model):
     electronics_ids = fields.Many2many('room.electronics', 'room_electronics_rel', string='Electronics')
 
     """ APARTMENT MASTER """
+    apartment_leasing_method = fields.Boolean('is_leasing', default=False)
+    apartment_leasing_based_on = fields.Selection([('room', "Rooms")], default='room', string='Leasing Based On')
 
     # ***********************************************************************************************************
     #  ******** Method to Update On Hand Qty
