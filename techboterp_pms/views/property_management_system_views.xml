@@ -37,7 +37,7 @@
                     <notebook>
                         <page name="apartment_details" string="Apartment details">
                             <field name="apartment_ids">
-                                <tree create="0">
+                                <tree create="0" delete="false">
                                     <field name="floor_id" string="Floor"/>
                                     <field name="name" string="Apartment Name"/>
                                     <field name="apartment_type_id" string="Apartment Type"/>

@@ -20,13 +20,16 @@
                         <field name="floor_id" options="{'no_open':True,'no_create_edit':1,'color_field': 'color'}"/>
                         <field name="apartment_type_id" required="0"/>
                         <field name="parking_availability"/>
+                        <field name="apartment_leasing_method" string="is For Leasing ?"/>
+                        <field name="apartment_leasing_based_on" readonly="1"  attrs="{'invisible': [('apartment_leasing_method','=', False)]}"/>
+
                     </group>
                 </group>
             </xpath>
 
             <xpath expr="//form/sheet/notebook/page[@name='general_information']" position="after">
                 <page name="apartment_rooms_details" string="Rooms details"
-                      attrs="{'invisible': [('is_apartment','=', False)]}">
+                      attrs="{'invisible': ['|',('is_apartment','=', False), ('apartment_leasing_method','=',False)]}">
                     <group>
                         <field name="room_ids" widget="many2many_tags" force_save="1"
                                options="{'no_open':True,'no_create':1,'no_create_edit':1,'color_field': 'color'}"
