@@ -18,7 +18,7 @@
                     </group>
 
                     <group>
-                        <div invisible="0">
+                        <div invisible="1">
                             <span class="d-inline-block">
                                 <field name="is_apartment" readonly='1' force_save="1"/>
                                 <label for="is_apartment"/>
