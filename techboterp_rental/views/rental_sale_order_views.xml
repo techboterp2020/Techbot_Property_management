@@ -18,7 +18,12 @@
                     </group>
 
                     <group>
-                        <div invisible="1">
+                        <div invisible="0">
+                            <span class="d-inline-block">
+                                <field name="is_apartment" readonly='1' force_save="1"/>
+                                <label for="is_apartment"/>
+                            </span>
+
                             <span class="d-inline-block">
                                 <field name="is_room" readonly='1' force_save="1"/>
                                 <label for="is_room"/>
@@ -44,8 +49,14 @@
 
                 <group>
                     <group attrs="{'invisible': [('rent_by','=', False)] }">
+                        <!-- """ Hide Apartment Name Based on rent by Partition, Bed space and bed and partition """-->
+                        <field name="apartment_ids" widget='many2many_tags'
+                               attrs="{'invisible': ['|',('is_apartment','=', True), ('is_room','!=', True)], 'readonly': [['state', 'not in', ['draft', 'sent']]] }"
+                               domain="[('apartment_leasing_method', '=', True)]"
+                               options="{'no_create': True, 'no_create_edit': True}"/>
+
                         <field name="room_ids" widget='many2many_tags'
-                               attrs="{'invisible': [('is_room','=', True)], 'readonly': [['state', 'not in', ['draft', 'sent']]] }"
+                               attrs="{'invisible': ['|',('is_apartment','=', True), ('is_room','=', True)], 'readonly': [['state', 'not in', ['draft', 'sent']]] }"
                                domain="[('leasing_method', '=', True)]"
                                options="{'no_create': True, 'no_create_edit': True}"/>
                     </group>
@@ -55,6 +66,7 @@
                 </group>
             </xpath>
 
+            <!--Chnage The Button name 'Open_pickup into Rented'-->
             <xpath expr="//button[@name='open_pickup']" position="replace">
                 <button name="open_pickup" type="object" class="btn-primary" string="Rented" data-hotkey="y"
                         attrs="{'invisible':['|', ('has_pickable_lines','=',False), ('state', 'not in', ['sale', 'done'])]}"/>
@@ -68,9 +80,10 @@
             <!--            </xpath>-->
 
             <xpath expr="//notebook/page[@name='order_lines']/field/tree/field[@name='product_id']" position="after">
+                <field name="is_apartment" optional="hide" attrs="{'invisible': [('is_apartment','=', False)]}"/>
                 <field name="is_room" optional="hide" attrs="{'invisible': [('is_room','=', False)]}"/>
-                <field  name="is_partition" optional="hide" attrs="{'invisible': [('is_partition','=', False)]}"/>
-                <field  name="is_bed_space" optional="hide" attrs="{'invisible': [('is_bed_space','=', False)]}"/>
+                <field name="is_partition" optional="hide" attrs="{'invisible': [('is_partition','=', False)]}"/>
+                <field name="is_bed_space" optional="hide" attrs="{'invisible': [('is_bed_space','=', False)]}"/>
             </xpath>
         </field>
     </record>

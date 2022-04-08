@@ -195,7 +195,7 @@ class ProductInherit(models.Model):
                         _("Please Don't Change Leasing Method, Currently the Partition is Running and Confirmed sale order are %s",
                           quotations))
 
-        # Onchange Based on is forleasing False
+        # Onchange Based on is for leasing False
         for rec in self:
             obj = self.env['sale.order.line'].search([('product_id', '=', rec.product_variant_id.id)])
             for object in obj:
